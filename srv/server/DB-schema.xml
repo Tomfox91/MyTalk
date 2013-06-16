@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database xmlns="http://www.spoledge.com/audao" version="1.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.spoledge.com/audao ../tool/audao/audao.xsd">
+
+    <config>
+        <factory>
+            <create-params default="false" direct="true" />
+        </factory>
+    </config>
+
+    <tables>
+
+        <table name="utente">
+            <edit-mode>column</edit-mode>
+            <auto-find />
+            <columns>
+                <column name="id">
+                    <type>long</type>
+                    <auto />
+                    <pk />
+                </column>
+                <column name="email">
+                    <type max-length="100">String</type>
+                    <not-null />
+                </column>
+                <column name="username">
+                    <type max-length="100" i18n="true">String</type>
+                    <not-null />
+                    <edit />
+                </column>
+                <column name="password">
+                    <type max-length="60">String</type>
+                    <not-null />
+                    <edit />
+                </column>
+                <column name="domanda">
+                    <type max-length="500">String</type>
+                    <not-null />
+                </column>
+                <column name="risposta">
+                    <type max-length="60">String</type>
+                    <not-null />
+                </column>
+                <column name="stato">
+                    <type max-length="500">String</type>
+                    <edit />
+                </column>
+            </columns>
+            <indexes>
+                <index name="ind_utente_id">
+                    <unique />
+                    <columns>
+                        <column name="id" />
+                    </columns>
+                </index>
+                <index name="ind_utente_email">
+                    <unique />
+                    <columns>
+                        <column name="email" />
+                    </columns>
+                </index>
+                <index name="ind_utente_name">
+                    <columns>
+                        <column name="username" />
+                    </columns>
+                </index>
+            </indexes>
+            <methods>
+                <find name="byPattern">
+                    <comment>Cerca il pattern nelle email e negli username.
+
+                        @param pattern il pattern da cercare. Deve essere minuscolo e cominciare con %# e finire con %</comment>
+                    <condition>
+                        <query>LCASE(CONCAT('#', email, '#', username)) LIKE ?</query>
+                        <params>
+                            <param name="pattern" type="String" />
+                        </params>
+                    </condition>
+                </find>
+
+                <update name="tuttiOffline">
+                    <set>
+                        <query>stato = 'Offline'</query>
+                    </set>
+                    <all />
+                </update>
+
+                <delete>
+                    <unique />
+                    <index name="ind_utente_email" />
+                </delete>
+            </methods>
+        </table>
+
+        <table name="amicizia">
+            <edit-mode>row</edit-mode>
+            <auto-find />
+            <columns>
+                <column name="principale">
+                    <ref table="utente" column="id" />
+                    <not-null />
+                </column>
+                <column name="altro">
+                    <ref table="utente" column="id" />
+                    <not-null />
+                </column>
+            </columns>
+            <indexes>
+                <index name="ind_amicizia_both">
+                    <unique />
+                    <columns>
+                        <column name="principale" />
+                        <column name="altro" />
+                    </columns>
+                </index>
+            </indexes>
+            <methods>
+                <insert-all />
+                <delete>
+                    <unique />
+                    <index name="ind_amicizia_both" />
+                </delete>
+                <delete name="coppiaAmicizie">
+                    <comment>
+                        Rimuove una coppia di amicizie.
+                    </comment>
+                    <condition>
+                        <query>? IN (principale, altro) AND ? IN (principale, altro)</query>
+                        <params>
+                            <column name="principale" java="unId" />
+                            <column name="altro" java="altroId" />
+                        </params>
+                    </condition>
+                </delete>
+            </methods>
+        </table>
+
+        <table name="richiesta_amicizia">
+            <edit-mode>row</edit-mode>
+            <auto-find />
+            <columns>
+                <column name="mittente">
+                    <ref table="utente" column="id" />
+                    <not-null />
+                </column>
+                <column name="destinatario">
+                    <ref table="utente" column="id" />
+                    <not-null />
+                </column>
+            </columns>
+            <indexes>
+                <index name="ind_richiesta_both">
+                    <unique />
+                    <columns>
+                        <column name="mittente" />
+                        <column name="destinatario" />
+                    </columns>
+                </index>
+                <index name="ind_richiesta_dest">
+                    <columns>
+                        <column name="destinatario" />
+                    </columns>
+                </index>
+            </indexes>
+            <methods>
+                <delete>
+                    <unique />
+                    <index name="ind_richiesta_both" />
+                </delete>
+            </methods>
+        </table>
+
+        <table name="messaggio">
+            <auto-find />
+            <columns>
+                <column name="mittente">
+                    <ref table="utente" column="id" />
+                </column>
+                <column name="destinatario">
+                    <ref table="utente" column="id" />
+                </column>
+                <column name="messaggio">
+                    <type max-length="42000" i18n="true">String</type>
+                    <not-null />
+                </column>
+            </columns>
+            <indexes>
+                <index name="ind_messaggio_dest">
+                    <columns>
+                        <column name="destinatario" />
+                    </columns>
+                </index>
+            </indexes>
+            <methods>
+                <delete>
+                    <index name="ind_messaggio_dest" />
+                </delete>
+            </methods>
+        </table>
+
+    </tables>
+</database>

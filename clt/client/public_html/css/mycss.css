@@ -1,0 +1,396 @@
+html, body {
+	height: 85%;
+}
+
+body {
+    padding-bottom: 40px;
+	overflow-x: hidden;
+}
+
+a{
+	text-decoration:none;
+}
+
+embed{
+	height:100%;
+	width:100%;
+}
+
+#nome h4{
+	color:#fff; 
+	display: inline-block;
+	margin-right:10px; 
+	vertical-align:middle;
+}
+
+#nome span{
+	margin-left: 5px;
+}
+
+footer{
+	clear:both;
+}	
+
+select{
+	width:auto;
+}
+
+.wrapper{
+	height:100%;
+}
+
+.tab-content{
+	padding:1.5em;
+}
+
+.container-fluid
+{
+    height:100%;
+	margin-bottom:20em;
+	margin-top: 65px;
+}
+
+.span4, .span8{
+	height:95%;
+	margin-top:1em;
+	margin-bottom: 8em;
+}
+
+.row-fluid{
+	height:100%;
+}
+
+.amico, .pendente, .richiedi{
+	margin-left:0.5em;
+}
+
+.btn{
+	padding: 4px 8px;
+}
+
+.container .btn, #pend .btn, #chiamaIP .btn{
+	margin-right:0.3em;
+}
+
+.accordion .btn{
+	margin-bottom:1%;
+}
+
+.alert{
+	padding:6px;
+}
+
+.label-warning{
+	background-color: #F8CA00;
+}
+
+.notify{
+	margin-left: 4px;
+	padding-left: 6px;
+	padding-right: 6px;
+	background-color: #ff8a00;
+}
+
+.modal {
+     max-height: 90%;
+    overflow-y: auto;
+}
+
+.text-success{
+	margin-top: 2%;
+}
+
+a.nonlink:hover{
+	text-decoration: none;
+	color:#555;
+}
+
+.nonlink{
+	cursor:default;
+	color:#555;
+}
+
+#cercaIP{
+	margin-bottom: 10px;
+}
+
+#cercaIP .alert{
+	margin-bottom:0;
+	margin-top:2%;
+}
+
+#logo{
+	margin-top:20%;
+}
+
+#amicizie{
+	border-right:1px solid #ddd; 
+	border-bottom:1px solid #ddd; 
+	border-top:0; 
+	border-left:1px solid #ddd;
+	border-radius:0;
+	height:70%;
+}
+
+#log{
+	padding:0px;
+}
+
+#log input{
+	max-width:300px;
+	min-width:170px;
+}
+
+input[readonly]{
+	cursor:default;
+}
+
+
+#tutorial{
+	margin-left: 4px;
+}
+
+#tut{
+	width:auto;
+}
+
+#amici ul, #pend>ul, #esiti, #elimina>ul, #add ul, #tools ul, .popover ul{
+	margin:0;
+	margin-left:1em;
+	list-style-type:none;
+}
+
+#amici ul>li, #pend>ul>li, #esiti>li, #elimina>ul>li, #add ul>li, #tools ul>li, .popover ul>li{
+	padding-bottom:0.5em;
+}
+
+#elimina>ul>li{
+	float:left;
+}
+
+#elimina .checkbox{
+	padding-right:10px;
+}
+
+#Online .checkbox, #Occupato .checkbox{
+	padding-left:0px;
+}
+
+#pend>p{
+	text-align:center;
+}
+
+#tab{
+	min-width:300px;
+}
+
+#tabchat, #contenuto, #tab{
+	height:100%;
+}
+
+#tabchat>form{
+	padding-top:1em;
+	padding-bottom:2em;
+}
+
+#tabchat>form>.search-query{
+	width:90%;
+}
+
+#tabamici{
+	margin:0;
+	padding:0;
+}
+
+#contenuto{
+	border-right:1px solid #ddd; 
+	border-bottom:1px solid #ddd; 
+	border-top:0; 
+	border-left:1px solid #ddd;
+	border-radius:0;
+	margin:0;
+	height: 70%;
+}
+
+#vchat{
+	border:1px solid #ddd; 
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom:1em;
+	z-index:1;
+	position:relative;
+	background-color: #000;
+}
+
+#vchat button, #vchat .btn-group{
+	padding:0.5em;
+}
+
+#vchat li{
+	margin-left:1em;
+}
+
+#myv{
+	z-index:2;
+	position: absolute; 
+	bottom:0px;
+	right:0px;
+}
+
+#myvchat{
+	width:200px; 
+	height:200px;
+	top: 480px;	
+	left: 468px; 
+	
+}
+
+#group li{
+	margin-left:5px;
+}
+
+#chat{
+	margin:0;
+}
+
+#amicoIP{
+	padding-top:1em;
+	padding-bottom:2em;
+	text-align:center;
+}
+
+#stato, #nome{
+	float:left;
+}
+
+#stato .label{
+	margin-right: 5px;
+}
+
+#reg{
+	margin-bottom:1em;
+}
+
+#lst{
+	margin-top:1em;
+	color:#fff;
+}
+
+#amicizie, #contenuto{
+	-webkit-border-bottom-right-radius: 4px;
+	-webkit-border-bottom-left-radius: 4px;
+	-moz-border-radius-bottomright: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-left-radius: 4px;
+}
+
+#stat{
+	margin-top:0.5em;
+}
+
+#elencostat{
+	margin-top:0.5em;
+}
+
+#_media_local{
+	width:20%;
+	position:relative;
+	left:39%;
+}
+
+#tools{
+	border:solid 1px #ddd;
+	background-image: -webkit-linear-gradient(top, #eee, #ddd);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	margin-bottom:0.4%;
+}
+
+#tools .popover{
+	z-index:42000;
+}
+
+#tools .close{
+	margin-top: 5px;
+	margin-right: -10px;
+}
+
+#vchat .close{
+	color: #fff;
+}
+#aggiungi{
+	margin-top: 0.5em;
+	margin-left: 5px;
+}
+
+#remotevid{
+	width:640px;
+	height:480px;
+}
+
+#menuUnoMolti>li{
+	padding:0.5em;
+}
+
+
+#multipla{
+	min-width:170px;
+	float:right;
+}
+
+#multipla .btn-inverse{
+	margin-right:1%;
+}
+
+#amiciOn>p{
+	border-bottom: solid 1px #e5e5e5;
+}
+
+#amiciOff>p{
+	border-bottom: solid 1px #e5e5e5;
+	margin-top: 4%;
+}
+
+#elimina>button{
+	margin-top:2%;
+}
+
+#ok{
+	margin-top:3%;
+}
+
+#registra>.modal-body{
+	overflow:hidden;
+}
+
+#form input{
+	width: 85%;
+}
+
+#form .btn{
+	margin-left:2%;
+}
+
+#formreg input{
+	margin-bottom:0;
+}
+
+#formreg label{
+	margin-top:10px;
+}
+
+#formreg .span4{
+	margin-top:0px;
+}
+
+#msgbody textarea{
+	width:97%;
+}
+
+#nome{
+	padding-top: 6px;
+}
+

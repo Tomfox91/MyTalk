@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+
+        <title>MyTalk</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="My Talk">
+        <meta name="author" content="Polaris Team">
+
+
+
+        <!-- Le styles -->
+        <link href="../css/bootstrap-cielo.css" rel="stylesheet">
+        <link href="../css/bootstrap-responsive.css" rel="stylesheet">
+        <link href="../css/mycss.css" rel="stylesheet">
+
+        <link rel="icon" type="image/png" href="../img/favicon.png" />
+        <link rel="shortcut icon" href="../img/favicon.ico" />
+
+    </head>
+
+    <body onload="aggiungiEventi();">
+
+        <!-- NavBar -->
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="brand"><img src="../img/logomini.png" alt="logo"></div>
+
+                    <a href="#" id="tutorial" class="btn btn-primary pull-right" data-toggle="popover" >
+                        <i class="icon-question-sign icon-white"></i></a>
+
+                    <div class="nav-collapse collapse" style="height: 0px;"><!--div necessario per il layout fluido-->
+                        <div> <!-- form e login -->
+
+
+
+                            <a href="#lost" id="lst" class="pull-right" data-toggle="modal">Password dimenticata?</a>
+
+
+
+                            <a href="#opzioni" id="opz" role="button" class="btn hide pull-right" data-toggle="modal"><i class="icon-cog" data-toggle="tooltip" title="modifica account"></i></a>
+
+                            <a href="#registra" id="reg" role="button" class="btn pull-right" data-toggle="modal" data-dynamic="true">Registrati</a>
+
+                            <span id="logout" class="hide pull-right">
+                                <button  id="logoutbtn" type="submit" class="btn" onclick="esci();">Logout</button>
+                            </span>
+
+                            <form id="log" class="navbar-form pull-right" onsubmit="return false;">
+                                <input id="email" class="span2" type="text" placeholder="Email" maxlength="50"/>
+                                <input id="pass" class="span2" type="password" placeholder="Password" maxlength="50"/>
+                                <span id="login">
+                                    <button id="logbtn" type="submit" class="btn" onclick="accedi();">Login</button>
+                                </span>
+                            </form>
+
+
+
+                            <ul id="client" class="nav pull-right">
+                                <li class="dropdown hide" id="stato">
+                                    <a href="#" id="onoff" class="dropdown-toggle" data-toggle="dropdown" title="modifica stato"></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#" id="on"><span class="label label-success"><i class="icon-ok-circle icon-white"></i></span>Online</a></li>
+                                        <li><a href="#" id="off"><span class="label label-warning"><i class="icon-time icon-white"></i></span>Occupato</a></li>
+                                    </ul>
+                                </li>
+                                <li class="hide" id="nome"><h4>Ciao<span></span></h4></li>
+                            </ul>
+                        </div>
+
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modali -->
+
+        <!-- Modifica Account -->
+        <div id="opzioni" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModificaAccount" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="ModificaAccount">Modifica Account</h3>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="accordion" id="accordion1">
+
+                    <!--Cambio Username-->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">Modifica Username</a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <form class="form-horizontal" onsubmit="return false;">
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputNewUsr">Nuovo Username</label>
+                                        <div class="controls">
+                                            <input type="text" id="inputNewUsr" placeholder="Username" maxlength="50">
+                                            <span class="help-inline hide">Lo username <strong>non deve</strong> contenere carattere speciali</span>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="pull-right btn btn-primary" onclick="submitNewUsr();" >Conferma</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Cambio Password-->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">Modifica Password</a>
+                        </div>
+                        <div id="collapseTwo" class="accordion-body collapse">
+                            <div class="accordion-inner">
+
+                                <form class="form-horizontal" onsubmit="return false;">
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputOldPsw">Password corrente</label>
+                                        <div class="controls">
+                                            <input type="password" id="inputOldPsw" placeholder="Password" maxlength="50">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputNewPsw">Nuova password</label>
+                                        <div class="controls">
+                                            <input type="password" id="inputNewPsw" placeholder="Nuova password" maxlength="50">
+                                        </div>
+                                    </div>
+                                    <div class="control-group">
+                                        <label class="control-label" for="inputConfPsw">Conferma password</label>
+                                        <div class="controls">
+                                            <input type="password" id="inputConfPsw" placeholder="Nuova password" maxlength="50">
+                                            <span class="help-inline hide">Le due password <strong>devono</strong> coincidere e contenere almeno un carattere</span>
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="pull-right btn btn-primary" onclick="submitNewPsw();" >Conferma</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Elimina Amici-->
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapseThree">Rimuovi Amici</a>
+                        </div>
+                        <div id="collapseThree" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                <form id="elimina" onsubmit="return false;">
+                                    <ul></ul>
+                                    <button type="submit" class="pull-right btn btn-danger" onclick="cancella();" data-dismiss="modal">Rimuovi</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Fatto</button>
+            </div>
+
+        </div>
+
+        <!-- Registrazione -->
+        <div id="registra" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Registrazione" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="Registrazione">Benvenuto!</h3>
+            </div>
+            <div class="modal-body">
+                <form id="formreg">
+                    <fieldset>
+                        <div class="control-group">
+                            <label class="control-label" for="user">Inserisci uno username:</label>
+                            <div class="controls">
+                                <input id="user" type="text" placeholder="Username"/>
+                                <span class="help-inline hide">Username <strong>non valido</strong></span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="emailR">Inserisci la tua email:</label>
+                            <div class="controls">
+                                <input id="emailR" type="text" placeholder="Email"/>
+                                <span class="help-inline hide">Indirizzo email <strong>non valido</strong></span>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="psw">Scegli una password:</label>
+                            <div class="controls">
+                                <input id="psw" type="password" placeholder="Password" maxlength="50"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="psw">Conferma la password:</label>
+                            <div class="controls">
+                                <input id="pswc" type="password" placeholder="Password" maxlength="50"/>
+                                <span class="help-inline hide">Le due password <strong>devono</strong> coincidere</span>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <label>Scegli una Domanda di Sicurezza</label>
+                    <select id="domanda">
+                        <option>Come si chiamava il tuo primo animale domestico?</option>
+                        <option>Qual è il tuo film preferito?</option>
+                        <option>Qual è il cognome da nubile di tua madre?</option>
+                        <option>Qual è il nome della tua scuola elementare?</option>
+                        <option>Quali sono le ultime 4 cifre della tua carta d'identità?</option>
+                    </select>
+                    <label>Inserisci la risposta:</label>
+                    <input type="text" class="span4" id="risposta" placeholder="Risposta" maxlength="50"/>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Chiudi</button>
+                <button class="btn btn-primary" onclick="registra();" >Registra</button>
+            </div>
+        </div>
+
+        <!-- Recupero Password -->
+        <div id="lost" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="RecuperoPsw" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="RecuperoPsw">Hai dimenticato la Password?</h3>
+            </div>
+            <div class="modal-body">
+                <div id="insem" class="control-group">
+                    <form onsubmit="return false;">
+                        <fieldset>
+                            <label class="control-label" for="lstem">Inserisci la tua email:</label>
+                            <input id="lstem" type="text" placeholder="Email" maxlength="50"/>
+                            <span class="help-inline hide">Indirizzo email <strong>non</strong> valido</span>
+                        </fieldset>
+                    </form>
+                </div>
+
+                <div id="dr" class="hide">
+                    <form onsubmit="return false;">
+                        <fieldset>
+                            <p></p>
+                            <input id="risp" type="text" placeholder="Risposta" maxlength="50"/>
+                        </fieldset>
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" >Inserisci la nuova password:</label>
+                                <input id="pwdn" type="password" placeholder="Password" maxlength="50"/>
+                                <label class="control-label" >Conferma la nuova password:</label>
+                                <input id="pwdnc" type="password" placeholder="Conferma password" maxlength="50"/>
+                                <span class="help-inline hide">Le due password <strong>devono</strong> coincidere e contenere almeno un carattere</span>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Chiudi</button>
+                <button id="conferma" type="submit" class="btn btn-primary" onclick="confermaEmail();">Invia</button>
+                <button id="newpass" type="submit" class="btn btn-primary hide" onclick="nuovapassword();" data-dismiss="modal">Conferma</button>
+            </div>
+
+        </div>
+
+        <!-- Messaggi Segreteria -->
+        <div id="msg" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="Segreteria" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="Segreteria"></h3>
+            </div>
+            <div id="msgbody" class="modal-body">
+            </div>
+            <div id="msgfooter" class="modal-footer">
+            </div>
+        </div>
+
+        <!-- Tutorial -->
+        <div id="tut" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="tutorialUtente" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="tutorialUtente">Tutorial</h3>
+            </div>
+            <div class="modal-body">
+				<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/coJfAQDjZOk?rel=0" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <!-- Contenuto -->
+        <div class="container-fluid">
+            <div class="row-fluid">
+
+                <!-- Tab Chat -->
+                <div class="span8">
+                    <div id="logo" class="pagination-centered">
+                        <img src="../img/LogoMT.png" alt="logo centrale">
+                    </div>
+                    <div id="tools" class="hide navbar-inner">
+
+                        <button id="aggiungi" role="button" class="btn" data-toggle="modal" data-target="#add"><i class="icon-plus" data-toggle="tooltip" title="aggiungi utente alla chiamata"></i></button>
+
+                        <button class="btn" id="stat" role="button"><i class="icon-signal" data-toggle="tooltip" title="visualizza statistiche della chiamata"></i></button>
+
+
+                    </div>
+                    <div id="vchat" class="hide pagination-centered">
+
+                        <div id="myv" class="hide"></div>
+                    </div>
+
+                    <div id="tabchat" class="hide">
+                        <ul id="chat" class="nav nav-tabs"></ul>
+                        <div id="contenuto" class="tab-content"></div>
+
+                        <div id="form" class="tab-content"></div>
+                    </div>
+                </div>
+
+                <!-- Aggiungi utente -->
+                <div id="add" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="AggiungiUtente" aria-hidden="true">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="AggiungiUtente"> Aggiungi utente</h3>
+                    </div>
+                    <div  class="modal-body">
+                        <ul id="list">
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal">Chiudi</button>
+                    </div>
+                </div>
+                <!--Tab Amicizie-->
+                <div class="span4">
+                    <div id="tab" class="hide">
+                        <ul id="tabamici" class="nav nav-tabs">
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
+                                <ul id="menuUnoMolti" class="dropdown-menu">
+                                    <li>
+                                        <label class="radio">
+                                            <input type="radio" name="unomolti" id="um1" value="SingolaChat" checked>Conversazione Singola
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="radio">
+                                            <input type="radio" name="unomolti" id="um2" value="MultiChat">Conversazione Multipla
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="active">
+                                <a href="#amici" data-toggle="tab">Amici</a>
+                            </li>
+                            <li><a href="#cerca" data-toggle="tab">Cerca</a></li>
+                            <li><a href="#pend" data-toggle="tab">Richieste<span class="label label-warning notify hide" data-toggle="tooltip" title="nuova richiesta di amicizia!">!</span></a></li>
+                        </ul>
+
+                        <div id="amicizie" class="tab-content">
+                            <div class="tab-pane active" id="amici">
+                                <div id="amiciOn">
+                                    <p> Amici Online </p>
+
+                                    <ul id="Online">
+                                    </ul>
+                                    <ul id="Occupato">
+                                    </ul>
+                                    <div id="multipla" class="hide">
+                                        <span class="multy">
+                                            <button class="btn btn-inverse" onclick="newMComunicazione(this);" data-dismiss="clickover" value="audio">Audio</button>
+                                            <button class="btn btn-inverse" onclick="newMComunicazione(this);" data-dismiss="clickover" value="video">Video</button>
+                                        </span>
+                                        <button class="btn btn-inverse" onclick="newMComunicazione(this);" data-dismiss="clickover" value="data">Chat</button>
+
+                                    </div>
+                                </div>
+                                <div id="amiciOff">
+                                    <p> Amici Offline </p>
+                                    <ul id="Offline">
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!--Tab Cerca -->
+                            <div class="tab-pane" id="cerca">
+                                <label>Cerca Utenti su MyTalk</label>
+                                <form id="cercaAmici" class="form-search" onsubmit="return false;">
+                                    <input type="text" id="cercaAmiciInput" class="input-medium search-query" placeholder="Inserisci nome o email" maxlength="50"/>
+                                    <button type="submit" class="btn" onclick="cerca()"><i class="icon-search"></i></button>
+                                </form>
+                                <p class="muted hide">Nessun risultato trovato</p>
+                                <ul id="esiti">
+                                </ul>
+                            </div>
+
+                            <!-- Tab amicizie pendenti -->
+                            <div class="tab-pane" id="pend">
+                                <p class="muted">Nessuna richiesta di amicizia</p>
+                                <ul></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="utenteIP" class="pagination-centered">
+                        <label>Cerca Utente per indirizzo IP</label>
+                        <form id="cercaIP" class="form-search" onsubmit="return false;">
+                            <input id="ip" type="text" class="input-medium search-query" placeholder="Inserisci IP" maxlength="50"/>
+                            <button type="submit" class="btn" onclick="IP();" value=""><i class="icon-search"></i></button>
+                            <span class="alert alert-error hide">Indirizzo IP <strong>non</strong> valido</span>
+                        </form>
+
+                        <div id="chiamaIP" class="hide">
+                            <span class="multy"><button class="btn btn-inverse" onclick="newIPComunicazione(this);" data-dismiss="clickover" value="audio">Audio</button>
+                                <button class="btn btn-inverse" onclick="newIPComunicazione(this);" data-dismiss="clickover" value="video">Video</button></span>
+                            <button id="chIP" class="btn btn-inverse" onclick="newIPComunicazione(this);" data-dismiss="clickover" value="data">Chat</button>
+                        </div>
+                        <p id="tuoIP" class="text-success">
+                        </p>
+						<p id="ownmail" class="text-success">
+						</p>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <!-- Le javascript -->   
+        <script type="text/javascript" src="../js/mootools-core-1.4.5-full-compat-yc.js"></script>
+        <script type="text/javascript" src="../js/pt-clt.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrapx-clickover.js"></script>
+        <script type="text/javascript" src="../js/bootbox-min.js"></script>
+
+    </body>
+</html>
+

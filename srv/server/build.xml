@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Audao" default="audao" basedir=".">
+    <property name="audao.home" location="../tool/audao"/>
+    <property name="build.dir.audao" location="audao-build"/>
+    <property name="lib.dir" location="../lib"/>
+    <property name="audao.dbschema" location="../server/DB-schema.xml"/>
+
+    <import file="${audao.home}/build-audao.xml"/>
+
+    <target name="build-jar-audao">
+        <antcall target="audao-jar">
+            <param name="audao-xml" location="${audao.dbschema}"/>
+            <param name="audao-gen-dir" location="${build.dir.audao}"/>
+            <param name="audao-dbtype" value="hsqldb"/>
+            <param name="audao-package" value="it.pt.mt.srv.model.db"/>
+            <param name="audao-jar" location="${build.dir.audao}/audao-hsql.jar"/>
+        </antcall>
+    </target>
+
+    <target name="delete-test-db">
+        <mkdir dir="db" />
+        <delete>
+            <fileset dir="db" includes="testdb.*" followsymlinks="false" />
+            <dirset dir="db" includes="testdb.*" followsymlinks="false" />
+        </delete>
+    </target>
+
+    <target depends="delete-test-db" name="create-tables-audao-hsql-test">
+        <java jar="${lib.dir}/sqltool.jar" failonerror="true" fork="true">
+            <arg value="--inlineRC=url=jdbc:hsqldb:file:db/testdb,user=SA,password="/>
+            <arg value="${build.dir.audao}/sql/create-tables.sql"/>
+        </java>
+        <echo message="create-tables.sql OK (test)" level="info" />
+    </target>
+
+    <target name="audao" depends="build-jar-audao"/>
+</project>

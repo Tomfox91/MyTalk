@@ -1,0 +1,78 @@
+tmpfile -> 000-init.js
+tmpfile -> 200-Utente.js
+tmpfile -> 201-Registro.js
+tmpfile -> 300-SubjectView.js
+	FORSE MANCA: 301-Updater.js PT.VIEW.Updater §initialize§                 initialize: function() {
+	FORSE MANCA: 301-Updater.js PT.VIEW.Updater §richiestaChiamata§                 richiestaChiamata: function(o) {
+	FORSE MANCA: 301-Updater.js PT.VIEW.Updater §click§                             click: function() {
+	FORSE MANCA: 301-Updater.js PT.VIEW.Updater §onShown§                          onShown: function() {
+tmpfile -> 301-Updater.js
+	FORSE MANCA: 302-Finestra.js PT.VIEW.Finestra §click§                 click: function() {
+tmpfile -> 302-Finestra.js
+	FORSE MANCA: 303-CreatoreFinestre.js PT.VIEW.CreatoreFinestre §creaFinestra§     creaFinestra: function(a) {
+tmpfile -> 303-CreatoreFinestre.js
+	FORSE MANCA: 304-AVChat.js PT.VIEW.AVChat §click§                     click: function() {
+tmpfile -> 304-AVChat.js
+	FORSE MANCA: 306-Chat.js PT.VIEW.Chat §click§                 click: function() {
+tmpfile -> 306-Chat.js
+	FORSE MANCA: 307-GestoreAccount.js PT.VIEW.GestoreAccount §setNewUsername§     setNewUsername: function(username) {
+tmpfile -> 307-GestoreAccount.js
+	FORSE MANCA: 308-Validatore.js PT.VIEW.Validatore §validaPsw§     validaPsw: function(psw, pswconfirm) {
+tmpfile -> 308-Validatore.js
+tmpfile -> 309-Utility.js
+	FORSE MANCA: 500-WebSocket.js PT.CONTROLLER.S.WebSocket §initialize§     initialize: function(url) {
+tmpfile -> 500-WebSocket.js
+	FORSE MANCA: 501-RegistroCanali.js PT.CONTROLLER.S.RegistroCanali §getPortaLibera§                 getPortaLibera: function() {
+	FORSE MANCA: 501-RegistroCanali.js PT.CONTROLLER.S.RegistroCanali §getCanaleVideo§                 getCanaleVideo: function() {
+	FORSE MANCA: 501-RegistroCanali.js PT.CONTROLLER.S.RegistroCanali §setCanaleVideo§                 setCanaleVideo: function(ch) {
+tmpfile -> 501-RegistroCanali.js
+	FORSE MANCA: 502-Canale.js PT.CONTROLLER.S.Canale §gestisciAccettazione§     _gestisciAccettazione: function(evento) {
+	FORSE MANCA: 502-Canale.js PT.CONTROLLER.S.Canale §gestisciPayload§     _gestisciPayload: function(evento) {
+tmpfile -> 502-Canale.js
+	FORSE MANCA: 503-CanaleRTC.js PT.CONTROLLER.S.CanaleRTC §gestisciPayload§     _gestisciPayload: function(evento) {
+tmpfile -> 503-CanaleRTC.js
+	FORSE MANCA: 504-CanaleAV.js PT.CONTROLLER.S.CanaleAV §callback§                 callback: function(scelta) {
+tmpfile -> 504-CanaleAV.js
+tmpfile -> 505-CanaleT.js
+	FORSE MANCA: 800-Dispatcher.js PT.CONTROLLER.Dispatcher §initialize§                 initialize: function() {
+	FORSE MANCA: 800-Dispatcher.js PT.CONTROLLER.Dispatcher §getSocket§                 getSocket: function() {
+tmpfile -> 800-Dispatcher.js
+	FORSE MANCA: 801-GestoreSegnale.js PT.CONTROLLER.G.GestoreSegnale §nuovoCanale§     nuovoCanale: function(evento) {
+tmpfile -> 801-GestoreSegnale.js
+	FORSE MANCA: 802-GestoreLogin.js PT.CONTROLLER.G.GestoreLogin §initialize§     initialize: function() {
+tmpfile -> 802-GestoreLogin.js
+	FORSE MANCA: 803-GestoreRegistrazione.js PT.CONTROLLER.G.GestoreRegistrazione §initialize§     initialize: function() {
+tmpfile -> 803-GestoreRegistrazione.js
+	FORSE MANCA: 804-GestoreRecuperaPassword.js PT.CONTROLLER.G.GestoreRecuperaPassword §initialize§     initialize: function() {
+tmpfile -> 804-GestoreRecuperaPassword.js
+	FORSE MANCA: 805-GestoreRichiestaDomandaSicurezza.js PT.CONTROLLER.G.GestoreRichiestaDomandaSicurezza §initialize§     initialize: function() {
+tmpfile -> 805-GestoreRichiestaDomandaSicurezza.js
+	FORSE MANCA: 807-GestoreRicercaUtente.js PT.CONTROLLER.G.GestoreRicercaUtente §initialize§     initialize: function() {
+tmpfile -> 807-GestoreRicercaUtente.js
+	FORSE MANCA: 808-GestoreNuovaAmicizia.js PT.CONTROLLER.G.GestoreNuovaAmicizia §initialize§     initialize: function() {
+tmpfile -> 808-GestoreNuovaAmicizia.js
+	FORSE MANCA: 809-GestoreModificaPassword.js PT.CONTROLLER.G.GestoreModificaPassword §initialize§     initialize: function() {
+tmpfile -> 809-GestoreModificaPassword.js
+	FORSE MANCA: 810-GestoreModificaProfilo.js PT.CONTROLLER.G.GestoreModificaProfilo §initialize§     initialize: function() {
+tmpfile -> 810-GestoreModificaProfilo.js
+	FORSE MANCA: 811-GestoreLogout.js PT.CONTROLLER.G.GestoreLogout §initialize§     initialize: function() {
+tmpfile -> 811-GestoreLogout.js
+	FORSE MANCA: 812-GestoreMessaggioSegreteria.js PT.CONTROLLER.G.GestoreMessaggioSegreteria §initialize§     initialize: function() {
+tmpfile -> 812-GestoreMessaggioSegreteria.js
+tmpfile -> 813-GestoreDomandaSicurezza.js
+tmpfile -> 814-GestoreEsitiRicerca.js
+tmpfile -> 815-GestoreListaAggiungi.js
+tmpfile -> 816-GestoreListaElimina.js
+tmpfile -> 817-GestoreListaModifica.js
+tmpfile -> 818-GestoreNuovaRichiestaAmicizia.js
+tmpfile -> 819-GestoreNuovoMessaggio.js
+	FORSE MANCA: 820-GestoreOperazione.js PT.CONTROLLER.G.GestoreOperazione §metodi§     metodi: function(orig) {
+tmpfile -> 820-GestoreOperazione.js
+tmpfile -> 821-GestoreProprioUtente.js
+	FORSE MANCA: 822-GestoreRispostaAmiciziaPendente.js PT.CONTROLLER.G.GestoreRispostaAmiciziaPendente §initialize§     initialize: function() {
+tmpfile -> 822-GestoreRispostaAmiciziaPendente.js
+	FORSE MANCA: 823-GestoreRimuoviAmico.js PT.CONTROLLER.G.GestoreRimuoviAmico §initialize§     initialize: function() {
+tmpfile -> 823-GestoreRimuoviAmico.js
+tmpfile -> 824-GestoreProprioIP.js
+	FORSE MANCA: 825-GestoreNuovaChiamata.js PT.CONTROLLER.G.GestoreNuovaChiamata §initialize§     initialize: function() {
+tmpfile -> 825-GestoreNuovaChiamata.js
